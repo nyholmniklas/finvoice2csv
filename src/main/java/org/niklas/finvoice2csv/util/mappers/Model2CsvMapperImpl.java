@@ -45,7 +45,7 @@ public class Model2CsvMapperImpl implements Model2CsvMapper {
 //	;Jura X9000 kahvikone;X9000;1;kpl;2460;;23;;;;;;;;;;;;;;;;;;
 	private void writeInvoiceRows(Finvoice finvoice, BufferedWriter writer) throws IOException {
 		for (InvoiceRow row:finvoice.getInvoiceRow()) {
-			writer.newLine();
+			writer.write(System.getProperty("line.separator"));
 			writer.write(";");
 			writer.write(row.getArticleName() + ";");
 			writer.write(row.getArticleIdentifier() + ";");
