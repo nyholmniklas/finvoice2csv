@@ -1,4 +1,4 @@
-package org.niklas.finvoice2csv.util.conversion;
+package org.niklas.finvoice2csv.util;
 
 import java.math.BigDecimal;
 

@@ -1,4 +1,4 @@
-package org.niklas.finvoice2csv.model.finvoice;
+package org.niklas.finvoice2csv.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

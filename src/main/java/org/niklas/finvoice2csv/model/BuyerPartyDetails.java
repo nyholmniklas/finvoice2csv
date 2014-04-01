@@ -1,4 +1,4 @@
-package org.niklas.finvoice2csv.model.finvoice;
+package org.niklas.finvoice2csv.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -10,7 +10,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class BuyerPartyDetails {
 	@XmlElement(name = "BuyerPartyIdentifier")
 	private String buyerPartyIdentifier;
+	@XmlElement(name = "BuyerPartyOrganisationName")
 	private String buyerOrganisationName;
+	@XmlElement(name = "BuyerPostalAddressDetails", type = BuyerPostalAddressDetails.class)
 	private BuyerPostalAddressDetails buyerPostalAddressDetails;
 	
 	public String getBuyerPartyIdentifier() {

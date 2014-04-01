@@ -1,4 +1,4 @@
-package org.niklas.finvoice2csv.model.finvoice;
+package org.niklas.finvoice2csv.model;
 
 import java.math.BigDecimal;
 
@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import org.niklas.finvoice2csv.util.conversion.JaxbBigDecimalAdapter;
+import org.niklas.finvoice2csv.util.JaxbBigDecimalAdapter;
 
 @XmlRootElement(name="InvoiceRow")
 @XmlAccessorType(XmlAccessType.FIELD)

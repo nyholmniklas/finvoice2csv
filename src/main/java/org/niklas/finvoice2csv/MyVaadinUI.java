@@ -7,7 +7,9 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import org.niklas.finvoice2csv.model.finvoice.Finvoice;
+import org.niklas.finvoice2csv.model.Finvoice;
+import org.niklas.finvoice2csv.util.Xml2ModelMapper;
+import org.niklas.finvoice2csv.util.Xml2ModelMapperImpl;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -41,18 +43,9 @@ public class MyVaadinUI extends UI
     }
 
 	private void testXmlConversion() {
-		 try {
-			 
-				File file = new File("C:\\temp\\lasku.xml");
-				JAXBContext jaxbContext = JAXBContext.newInstance(Finvoice.class);
-		 
-				Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-				Finvoice finvoice = (Finvoice) jaxbUnmarshaller.unmarshal(file);
-				System.out.println(finvoice.getInvoiceRow().get(0).getUnitPriceAmount());
-		 
-			  } catch (JAXBException e) {
-				e.printStackTrace();
-			  }
+		 Xml2ModelMapper mapper = new Xml2ModelMapperImpl();
+		 Finvoice finvoice = mapper.getFinvoiceFromXml(new File("c:\\temp\\lasku.xml"));
+		 //test if mapping worked
 	}
 
 }
