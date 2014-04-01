@@ -1,4 +1,4 @@
-package org.niklas.finvoice2csv.util;
+package org.niklas.finvoice2csv.util.mappers;
 
 import java.io.BufferedWriter;
 import java.io.File;

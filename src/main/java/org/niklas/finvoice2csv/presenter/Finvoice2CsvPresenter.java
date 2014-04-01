@@ -4,10 +4,10 @@ import java.io.File;
 import java.io.IOException;
 
 import org.niklas.finvoice2csv.model.Finvoice;
-import org.niklas.finvoice2csv.util.Model2CsvMapper;
-import org.niklas.finvoice2csv.util.Model2CsvMapperImpl;
-import org.niklas.finvoice2csv.util.Xml2ModelMapper;
-import org.niklas.finvoice2csv.util.Xml2ModelMapperImpl;
+import org.niklas.finvoice2csv.util.mappers.Model2CsvMapper;
+import org.niklas.finvoice2csv.util.mappers.Model2CsvMapperImpl;
+import org.niklas.finvoice2csv.util.mappers.Xml2ModelMapper;
+import org.niklas.finvoice2csv.util.mappers.Xml2ModelMapperImpl;
 
 import com.vaadin.ui.UI;
 

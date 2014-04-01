@@ -8,8 +8,8 @@ import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 import org.niklas.finvoice2csv.model.Finvoice;
-import org.niklas.finvoice2csv.util.Xml2ModelMapper;
-import org.niklas.finvoice2csv.util.Xml2ModelMapperImpl;
+import org.niklas.finvoice2csv.util.mappers.Xml2ModelMapper;
+import org.niklas.finvoice2csv.util.mappers.Xml2ModelMapperImpl;
 
 public class Xml2ModelMapperTest {
 	private Finvoice finvoice;

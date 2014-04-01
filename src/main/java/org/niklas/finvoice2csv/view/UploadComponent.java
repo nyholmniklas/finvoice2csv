@@ -49,7 +49,6 @@ public abstract class UploadComponent extends VerticalLayout implements
         upload.addFailedListener((Upload.FailedListener) this);
         upload.addProgressListener((Upload.ProgressListener) this);
         upload.addFinishedListener((Upload.FinishedListener) this);
-        
         processingLayout = new HorizontalLayout();
         processingLayout.setSpacing(true);
         processingLayout.setVisible(false);
