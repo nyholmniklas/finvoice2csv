@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 
+import org.niklas.finvoice2csv.presenter.Finvoice2CsvPresenter;
+
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.HorizontalLayout;
@@ -33,13 +35,15 @@ public abstract class UploadComponent extends VerticalLayout implements
 	protected Long contentLength;
 	protected Button cancelProcessing;
 	protected HorizontalLayout processingLayout;
+	private Finvoice2CsvPresenter presenter;
 
-	public UploadComponent(String buttonCaption, String folderPath) {
-        upload = new Upload();
+	public UploadComponent(String buttonCaption, Finvoice2CsvPresenter presenter) {
+        this.presenter = presenter;
+		upload = new Upload();
         this.addComponent(upload);
         this.maxSize = 1000000;
         upload.setReceiver( this); 
-        this.directory = folderPath;
+        this.directory = presenter.getFolderPath();
         upload.setButtonCaption(buttonCaption);
         upload.addSucceededListener((Upload.SucceededListener) this);
         upload.addFailedListener((Upload.FailedListener) this);
@@ -79,8 +83,7 @@ public abstract class UploadComponent extends VerticalLayout implements
 			upload.interruptUpload();
 		}
 
-		file = new File(directory + "/"
-				+ getUI().getSession().getSession().getId() + extension);
+		file = presenter.getXmlFile();
 
 		try {
 			fos = new FileOutputStream(file);

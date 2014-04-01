@@ -1,6 +1,7 @@
 package org.niklas.finvoice2csv.view;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.niklas.finvoice2csv.presenter.Finvoice2CsvPresenter;
 
@@ -10,6 +11,7 @@ import com.vaadin.server.FileResource;
 import com.vaadin.ui.Accordion;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Upload.SucceededEvent;
@@ -33,12 +35,19 @@ public class Finvoice2CsvView extends Panel{
 	}
 
 	private void initComponents() {
-		uploadComponent = new UploadComponent("Lähetä XML", presenter.getFolderPath()) {
+		uploadComponent = new UploadComponent("Lähetä XML", presenter) {
 			
 			@Override
 			public void uploadSucceeded(SucceededEvent event) {
+				presenter.parseFinvoiceFromXml();
 				uploadStatusLabel.setValue("Finvoice tiedosto vastaanotettu.");
-				enableDownloadLink();
+				try {
+					enableDownloadLink();
+				} catch (IOException e) {
+					Notification.show("Ongelma CSV tiedoston luonnissa.",
+							Notification.Type.ERROR_MESSAGE);
+					e.printStackTrace();
+				}
 			}
 		};
 		uploadStatusLabel = new Label("Et ole vielä lähettänyt XML Finvoice tiedostoa.");
@@ -64,7 +73,7 @@ public class Finvoice2CsvView extends Panel{
 		
 	}
 	
-	private void enableDownloadLink(){
+	private void enableDownloadLink() throws IOException{
 			downloadButton.setEnabled(false);
 			fileDownloader = new FileDownloader(new FileResource(presenter.getCsvFile()));
 			fileDownloader.extend(downloadButton);

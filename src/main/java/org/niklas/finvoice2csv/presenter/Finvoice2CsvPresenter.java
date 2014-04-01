@@ -1,12 +1,19 @@
 package org.niklas.finvoice2csv.presenter;
 
 import java.io.File;
+import java.io.IOException;
+
+import org.niklas.finvoice2csv.model.Finvoice;
+import org.niklas.finvoice2csv.util.Model2CsvMapper;
+import org.niklas.finvoice2csv.util.Model2CsvMapperImpl;
+import org.niklas.finvoice2csv.util.Xml2ModelMapper;
+import org.niklas.finvoice2csv.util.Xml2ModelMapperImpl;
 
 import com.vaadin.ui.UI;
 
 public class Finvoice2CsvPresenter {
 	private String sessionId;
-	private File csvFile;
+	private Finvoice finvoice;
 	public static final String OPENSHIFT_PATH = System
 			.getenv("OPENSHIFT_DATA_DIR");
 	public static final String LOCAL_PATH = "C:\\temp\\";
@@ -39,9 +46,22 @@ public class Finvoice2CsvPresenter {
 		return folderPath;
 	}
 
-	public File getCsvFile() {
-		// TODO Change to csv (xml for testing)
-		return new File(folderPath + "/" + sessionId + ".xml");
+	public File getCsvFile() throws IOException {
+		File file = new File(folderPath + "/" + sessionId + ".csv");
+		Model2CsvMapper model2CsvMapper = new Model2CsvMapperImpl();
+		model2CsvMapper.createCsvFileFromFinvoice(finvoice, file);
+		return file;
+	}
+
+	public void parseFinvoiceFromXml() {
+		Xml2ModelMapper xml2ModelMapper = new Xml2ModelMapperImpl();
+		finvoice = xml2ModelMapper.getFinvoiceFromXml(getXmlFile());
+		
+	}
+
+	public File getXmlFile() {
+		File file = new File(folderPath + "/" + sessionId + ".xml");
+		return file;
 	}
 
 }
