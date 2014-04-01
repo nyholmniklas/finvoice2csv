@@ -45,7 +45,7 @@ public class MyVaadinUI extends UI
 	private void testXmlConversion() {
 		 Xml2ModelMapper mapper = new Xml2ModelMapperImpl();
 		 Finvoice finvoice = mapper.getFinvoiceFromXml(new File("c:\\temp\\lasku.xml"));
-		 //test if mapping worked
+		 System.out.println(finvoice.getInvoiceDetails().getPaymentTermsDetails().getInvoiceDueDate().toString());
 	}
 
 }

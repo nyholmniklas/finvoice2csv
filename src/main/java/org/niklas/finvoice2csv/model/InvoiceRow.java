@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import org.niklas.finvoice2csv.util.JaxbBigDecimalAdapter;
+import org.niklas.finvoice2csv.util.jaxbadapters.JaxbBigDecimalAdapter;
 
 @XmlRootElement(name="InvoiceRow")
 @XmlAccessorType(XmlAccessType.FIELD)

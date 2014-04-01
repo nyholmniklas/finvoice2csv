@@ -9,14 +9,16 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import org.niklas.finvoice2csv.util.JaxbBigDecimalAdapter;
+import org.niklas.finvoice2csv.util.jaxbadapters.JaxbBigDecimalAdapter;
+import org.niklas.finvoice2csv.util.jaxbadapters.JaxbDateAdapter;
 
 @XmlRootElement(name="InvoiceDetails")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class InvoiceDetails {
 	@XmlElement(name = "InvoiceTypeCode")
 	private String invoiceTypeCode;
-	//TODO Annotate Date and set adapter
+	@XmlJavaTypeAdapter(JaxbDateAdapter.class)
+	@XmlElement(name = "InvoiceDate")
 	private Date invoiceDate;
 	@XmlJavaTypeAdapter(JaxbBigDecimalAdapter.class)
 	@XmlElement(name = "InvoiceTotalVatExcludedAmount")
