@@ -32,7 +32,33 @@ public class Xml2ModelMapperTest {
 				.equals("ProCountor International Oy"));
 	}
 
-	// TODO TEST ADDRESSES!!!!
+	@Test
+	public void testBuyerStreetName() {
+		assertTrue(finvoice.getBuyerPartyDetails()
+				.getBuyerPostalAddressDetails().getBuyerStreetName()
+				.equals("Maapallonkuja 1 A"));
+	}
+	
+	@Test
+	public void testBuyerTownName() {
+		assertTrue(finvoice.getBuyerPartyDetails()
+				.getBuyerPostalAddressDetails().getBuyerTownName()
+				.equals("ESPOO"));
+	}
+	
+	@Test
+	public void testBuyerPostcodeIdentifier() {
+		assertTrue(finvoice.getBuyerPartyDetails()
+				.getBuyerPostalAddressDetails().getBuyerPostCodeIdentifier()
+				.equals("02150"));
+	}
+	
+	@Test
+	public void testBuyerCountryCode() {
+		assertTrue(finvoice.getBuyerPartyDetails()
+				.getBuyerPostalAddressDetails().getCountryCode()
+				.equals("FI"));
+	}
 
 	@Test
 	public void testDeliveryOrganisationName() {
@@ -40,21 +66,50 @@ public class Xml2ModelMapperTest {
 				.getDeliveryOrganisationName()
 				.equals("ProCountor International Oy"));
 	}
+	
+	@Test
+	public void testDeliveryStreetName() {
+		assertTrue(finvoice.getDeliveryPartyDetails()
+				.getDeliveryPostalAddressDetails().getDeliveryStreetName()
+				.equals("Keilaranta 8"));
+	}
+	
+	@Test
+	public void testDeliveryTownName() {
+		assertTrue(finvoice.getDeliveryPartyDetails()
+				.getDeliveryPostalAddressDetails().getDeliveryTownName()
+				.equals("ESPOO"));
+	}
+	
+	@Test
+	public void testDeliveryPostcodeIdentifier() {
+		assertTrue(finvoice.getDeliveryPartyDetails()
+				.getDeliveryPostalAddressDetails().getDeliveryPostCodeIdentifier()
+				.equals("02150"));
+	}
+	
+	@Test
+	public void testDeliveryCountryCode() {
+		assertTrue(finvoice.getDeliveryPartyDetails()
+				.getDeliveryPostalAddressDetails().getCountryCode()
+				.equals("FI"));
+	}
 
 	// TODO TEST DATES!!!!
-	
+
 	@Test
 	public void testInvoiceTypeCode() {
 		assertTrue(finvoice.getInvoiceDetails().getInvoiceTypeCode()
 				.equals("M"));
 	}
-	
+
 	@Test
 	public void testInvoiceTotalVatExcludedAmount() {
-		assertTrue(finvoice.getInvoiceDetails().getInvoiceTotalVatExcludedAmount()
+		assertTrue(finvoice.getInvoiceDetails()
+				.getInvoiceTotalVatExcludedAmount()
 				.equals(new BigDecimal("2450.00")));
 	}
-	
+
 	@Test
 	public void testInvoiceTotalVatAmount() {
 		assertTrue(finvoice.getInvoiceDetails().getInvoiceTotalVatAmount()
