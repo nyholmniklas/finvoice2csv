@@ -23,6 +23,8 @@ public class Finvoice2CsvView extends Panel{
 	
 	private Finvoice2CsvPresenter presenter;
 	
+	private VerticalLayout layout;
+	
 	private Label title;
 	private UploadComponent uploadComponent;
 	private Label uploadStatusLabel;
@@ -63,7 +65,7 @@ public class Finvoice2CsvView extends Panel{
 	}
 
 	private void setLayout() {
-		VerticalLayout layout = new VerticalLayout();
+		layout = new VerticalLayout();
 		layout.setSpacing(true);
 		layout.setMargin(true);
 		layout.setSizeFull();
@@ -84,6 +86,7 @@ public class Finvoice2CsvView extends Panel{
 	}
 	
 	private void enableDownloadLink() throws IOException{
+			if (fileDownloader != null)downloadButton.removeExtension(fileDownloader);
 			downloadButton.setEnabled(false);
 			fileDownloader = new FileDownloader(new FileResource(presenter.getCsvFile()));
 			fileDownloader.extend(downloadButton);
