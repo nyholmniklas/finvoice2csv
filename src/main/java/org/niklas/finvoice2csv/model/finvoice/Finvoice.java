@@ -13,9 +13,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Finvoice {
 	@XmlElement(name = "BuyerPartyDetails", type = BuyerPartyDetails.class)
 	private BuyerPartyDetails buyerPartyDetails;
+	@XmlElement(name = "DeliveryPartyDetails", type = DeliveryPartyDetails.class)
 	private DeliveryPartyDetails deliveryPartyDetails;
+	@XmlElement(name = "InvoiceDetails", type = InvoiceDetails.class)
 	private InvoiceDetails invoiceDetails;
-	private List<InvoiceRow> invoiceRows;
+	@XmlElement(name="InvoiceRow")
+	private List<InvoiceRow> invoiceRow;
 	
 	public BuyerPartyDetails getBuyerPartyDetails() {
 		return buyerPartyDetails;
@@ -35,11 +38,11 @@ public class Finvoice {
 	public void setInvoiceDetails(InvoiceDetails invoiceDetails) {
 		this.invoiceDetails = invoiceDetails;
 	}
-	public List<InvoiceRow> getInvoiceRows() {
-		return invoiceRows;
+	public List<InvoiceRow> getInvoiceRow() {
+		return invoiceRow;
 	}
-	public void setInvoiceRows(List<InvoiceRow> invoiceRows) {
-		this.invoiceRows = invoiceRows;
+	public void setInvoiceRow(List<InvoiceRow> invoiceRow) {
+		this.invoiceRow = invoiceRow;
 	}
 	
 }

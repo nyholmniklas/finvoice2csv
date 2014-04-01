@@ -2,15 +2,38 @@ package org.niklas.finvoice2csv.model.finvoice;
 
 import java.math.BigDecimal;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import org.niklas.finvoice2csv.util.conversion.JaxbBigDecimalAdapter;
+
+@XmlRootElement(name="InvoiceRow")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class InvoiceRow {
+	@XmlElement(name = "ArticleIdentifier")
 	private String articleIdentifier;
+	@XmlElement(name = "ArticleName")
 	private String articleName;
+	@XmlElement(name = "OrderedQuantity")
 	private int orderedQuantity;
+	@XmlJavaTypeAdapter(JaxbBigDecimalAdapter.class)
+	@XmlElement(name = "UnitPriceAmount")
 	private BigDecimal unitPriceAmount;
+	@XmlElement(name = "rowVatRatePercent")
 	private int rowVatRatePercent;
+	@XmlJavaTypeAdapter(JaxbBigDecimalAdapter.class)
+	@XmlElement(name = "rowVatAmount")
 	private BigDecimal rowVatAmount;
+	@XmlJavaTypeAdapter(JaxbBigDecimalAdapter.class)
+	@XmlElement(name = "RowVatExcludedAmount")
 	private BigDecimal rowVatExcludedAmount;
+	@XmlJavaTypeAdapter(JaxbBigDecimalAdapter.class)
+	@XmlElement(name = "RowAmount")
 	private BigDecimal rowAmount;
+	
 	public String getArticleIdentifier() {
 		return articleIdentifier;
 	}

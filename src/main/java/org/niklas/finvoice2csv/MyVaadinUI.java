@@ -48,7 +48,7 @@ public class MyVaadinUI extends UI
 		 
 				Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 				Finvoice finvoice = (Finvoice) jaxbUnmarshaller.unmarshal(file);
-				System.out.println(finvoice.getBuyerPartyDetails().getBuyerPartyIdentifier());
+				System.out.println(finvoice.getInvoiceRow().get(0).getUnitPriceAmount());
 		 
 			  } catch (JAXBException e) {
 				e.printStackTrace();
