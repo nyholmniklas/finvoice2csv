@@ -1,6 +1,13 @@
 package org.niklas.finvoice2csv;
 
+import java.io.File;
+
 import javax.servlet.annotation.WebServlet;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+
+import org.niklas.finvoice2csv.model.finvoice.Finvoice;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -19,6 +26,7 @@ public class MyVaadinUI extends UI
 
     @Override
     protected void init(VaadinRequest request) {
+    	testXmlConversion();
         final VerticalLayout layout = new VerticalLayout();
         layout.setMargin(true);
         setContent(layout);
@@ -31,5 +39,20 @@ public class MyVaadinUI extends UI
         });
         layout.addComponent(button);
     }
+
+	private void testXmlConversion() {
+		 try {
+			 
+				File file = new File("C:\\temp\\lasku.xml");
+				JAXBContext jaxbContext = JAXBContext.newInstance(Finvoice.class);
+		 
+				Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+				Finvoice finvoice = (Finvoice) jaxbUnmarshaller.unmarshal(file);
+				System.out.println(finvoice.getBuyerPartyDetails().getBuyerPartyIdentifier());
+		 
+			  } catch (JAXBException e) {
+				e.printStackTrace();
+			  }
+	}
 
 }
