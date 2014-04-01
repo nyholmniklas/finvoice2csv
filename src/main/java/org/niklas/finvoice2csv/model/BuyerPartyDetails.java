@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class BuyerPartyDetails {
 	@XmlElement(name = "BuyerPartyIdentifier")
 	private String buyerPartyIdentifier;
-	@XmlElement(name = "BuyerPartyOrganisationName")
+	@XmlElement(name = "BuyerOrganisationName")
 	private String buyerOrganisationName;
 	@XmlElement(name = "BuyerPostalAddressDetails", type = BuyerPostalAddressDetails.class)
 	private BuyerPostalAddressDetails buyerPostalAddressDetails;
