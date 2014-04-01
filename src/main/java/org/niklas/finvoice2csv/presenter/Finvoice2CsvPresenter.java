@@ -2,16 +2,20 @@ package org.niklas.finvoice2csv.presenter;
 
 import java.io.File;
 
+import com.vaadin.ui.UI;
+
 public class Finvoice2CsvPresenter {
-//	private File file;
+	private String sessionId;
+	private File csvFile;
 	public static final String OPENSHIFT_PATH = System
 			.getenv("OPENSHIFT_DATA_DIR");
 	public static final String LOCAL_PATH = "C:\\temp\\";
 	private String folderPath;
 
-	public Finvoice2CsvPresenter() {
+	public Finvoice2CsvPresenter(String sessionId) {
+		this.sessionId = sessionId;
 		setFolderPath();
-		setFile();
+		createFolderPathDirectory();
 	}
 
 	private void setFolderPath() {
@@ -26,13 +30,18 @@ public class Finvoice2CsvPresenter {
 		}
 	}
 
-	private void setFile() {
+	private void createFolderPathDirectory() {
 		if (!new File(folderPath).exists())
 			new File(folderPath).mkdir();
 	}
 
 	public String getFolderPath() {
 		return folderPath;
+	}
+
+	public File getCsvFile() {
+		// TODO Change to csv (xml for testing)
+		return new File(folderPath + "/" + sessionId + ".xml");
 	}
 
 }

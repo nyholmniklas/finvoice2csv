@@ -29,7 +29,8 @@ public class Finvoice2CsvApp extends UI
 
     @Override
     protected void init(VaadinRequest request) {
-    	Finvoice2CsvPresenter presenter = new Finvoice2CsvPresenter();
+    	String sessionId = getSession().getSession().getId();
+    	Finvoice2CsvPresenter presenter = new Finvoice2CsvPresenter(sessionId);
     	setContent(new Finvoice2CsvView(presenter));
     }
 
