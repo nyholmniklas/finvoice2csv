@@ -18,7 +18,6 @@ public class Xml2ModelMapperImpl implements Xml2ModelMapper {
 
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			finvoice = (Finvoice) jaxbUnmarshaller.unmarshal(xmlFile);
-			// System.out.println(finvoice.getInvoiceRow().get(0).getUnitPriceAmount());
 
 		} catch (JAXBException e) {
 			e.printStackTrace();
