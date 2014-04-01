@@ -37,6 +37,9 @@ public class Finvoice2CsvView extends Panel{
 
 	private void setLayout() {
 		VerticalLayout layout = new VerticalLayout();
+		layout.setSpacing(true);
+		layout.setMargin(true);
+		layout.setSizeFull();
 		layout.addComponent(uploadComponent);
 		setContent(layout);
 	}
