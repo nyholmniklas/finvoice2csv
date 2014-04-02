@@ -25,7 +25,7 @@ public class InvoiceRow {
 	@XmlElement(name = "RowVatRatePercent")
 	private int rowVatRatePercent;
 	@XmlJavaTypeAdapter(JaxbBigDecimalAdapter.class)
-	@XmlElement(name = "rowVatAmount")
+	@XmlElement(name = "RowVatAmount")
 	private BigDecimal rowVatAmount;
 	@XmlJavaTypeAdapter(JaxbBigDecimalAdapter.class)
 	@XmlElement(name = "RowVatExcludedAmount")
