@@ -17,7 +17,7 @@ public class Xml2ModelMapperTest {
 	@Before
 	public void setUp() {
 		Xml2ModelMapper mapper = new Xml2ModelMapperImpl();
-		finvoice = mapper.getFinvoiceFromXml(new File("c:\\temp\\lasku.xml"));
+		finvoice = mapper.getFinvoiceFromXml(new File("test/res/lasku.xml"));
 	}
 
 	@Test
