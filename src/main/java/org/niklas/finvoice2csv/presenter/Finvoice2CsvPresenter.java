@@ -3,6 +3,8 @@ package org.niklas.finvoice2csv.presenter;
 import java.io.File;
 import java.io.IOException;
 
+import javax.xml.bind.JAXBException;
+
 import org.niklas.finvoice2csv.model.Finvoice;
 import org.niklas.finvoice2csv.util.mappers.Model2CsvMapper;
 import org.niklas.finvoice2csv.util.mappers.Model2CsvMapperImpl;
@@ -53,7 +55,7 @@ public class Finvoice2CsvPresenter {
 		return file;
 	}
 
-	public void parseFinvoiceFromXml() {
+	public void parseFinvoiceFromXml() throws JAXBException {
 		Xml2ModelMapper xml2ModelMapper = new Xml2ModelMapperImpl();
 		finvoice = xml2ModelMapper.getFinvoiceFromXml(getXmlFile());
 		

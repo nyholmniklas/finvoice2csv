@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import java.io.File;
 import java.math.BigDecimal;
 
+import javax.xml.bind.JAXBException;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.niklas.finvoice2csv.model.Finvoice;
@@ -17,7 +19,11 @@ public class Xml2ModelMapperTest {
 	@Before
 	public void setUp() {
 		Xml2ModelMapper mapper = new Xml2ModelMapperImpl();
-		finvoice = mapper.getFinvoiceFromXml(new File("test/res/lasku.xml"));
+		try {
+			finvoice = mapper.getFinvoiceFromXml(new File("test/res/lasku.xml"));
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Test

@@ -3,6 +3,8 @@ package org.niklas.finvoice2csv.view;
 import java.io.File;
 import java.io.IOException;
 
+import javax.xml.bind.JAXBException;
+
 import org.niklas.finvoice2csv.presenter.Finvoice2CsvPresenter;
 
 import com.vaadin.data.util.BeanItem;
@@ -44,7 +46,14 @@ public class Finvoice2CsvView extends Panel{
 			
 			@Override
 			public void uploadSucceeded(SucceededEvent event) {
-				presenter.parseFinvoiceFromXml();
+				try {
+					presenter.parseFinvoiceFromXml();
+				} catch (JAXBException e) {
+					Notification.show("Ongelma XML tiedoston lukemisessa.",
+							Notification.Type.ERROR_MESSAGE);
+					e.printStackTrace();
+					return;
+				}
 				uploadStatusLabel.setValue("XML tiedosto on vastaanotettu. Voit ladata CSV tiedoston tai lähettää toisen XML tiedoston.");
 				try {
 					enableDownloadLink();
@@ -52,6 +61,7 @@ public class Finvoice2CsvView extends Panel{
 					Notification.show("Ongelma CSV tiedoston luonnissa.",
 							Notification.Type.ERROR_MESSAGE);
 					e.printStackTrace();
+					return;
 				}
 			}
 		};
